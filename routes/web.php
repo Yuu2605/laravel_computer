@@ -17,5 +17,4 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index', [HomeController::class,'index']);
 Route::get('/admin', [DashboardControllerController::class,'index']);
