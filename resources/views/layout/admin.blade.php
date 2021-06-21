@@ -173,10 +173,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src= {{ asset('dist/img/user2-160x160.jpg') }} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
+                    {{-- <a href="#" class="d-block">
+                        {{ Auth::user()->name }} - {{ Auth::id() }}
+                    </a> --}}
+                    {{-- <div>
+                        <form method="POST" action="{{ route('auth.logout') }}">
+                            @csrf
+                            <button class="btn btn-link">Logout</button>
+                        </form>
+                    </div> --}}
+                </div>
       </div>
-
+      @php
+                $routeName = \Request::route()->getName()
+            @endphp
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -194,38 +204,106 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+               <li class="nav-item menu-open">
+            <a href="{{route('dashboard')}}" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link 
+            @if (in_array($routeName, [
+                                'user.list',
+                                'user.form',
+                            ]))
+                                
+                            @endif
+            ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Tài khoản
+                Quản lý tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('user.list')}}" class="nav-link {{ $routeName == 'user.list' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách tài khoản</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('user.form')}}" class="nav-link">
+                <a href="{{route('user.form')}}" class="nav-link {{ $routeName == 'user.form' ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm tài khoản</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item ">
+            <a href="#" class="nav-link 
+            @if (in_array($routeName, [
+                                'user.list',
+                                'user.form',
+                            ]))
+                                
+                            @endif
+            ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Quản lý loại hàng
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('user.list')}}" class="nav-link {{ $routeName == 'user.list' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách loại hàng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('user.form')}}" class="nav-link {{ $routeName == 'user.form' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm loại hàng</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link 
+            @if (in_array($routeName, [
+                                'user.list',
+                                'user.form',
+                            ]))
+                                
+                            @endif
+            ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý sản phẩm
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('user.list')}}" class="nav-link {{ $routeName == 'user.list' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách sản phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('user.form')}}" class="nav-link {{ $routeName == 'user.form' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm sản phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
