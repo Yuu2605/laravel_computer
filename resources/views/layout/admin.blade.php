@@ -203,16 +203,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách tài khoản</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{route('user.form')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm tài khoản</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sửa tài khoản</p>
                 </a>
               </li>
             </ul>
@@ -258,7 +258,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card text-white">
+                <div class="card ">
                   <div class="card-body">
                    @yield('content');
                   </div>

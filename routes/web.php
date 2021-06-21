@@ -37,6 +37,7 @@ use App\Http\Controllers\UsersController;
         });
         Route::get('/add-users',[UsersController::class,'create'])->name('user.form');
         Route::post('/add-users',[UsersController::class,'store'])->name('user.store');
+        Route::get('/list-users',[UsersController::class,'index'])->name('user.list');
     });
 
 

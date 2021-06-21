@@ -14,6 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $user = new UsersModel();
+        $data=$user->get();
         return view('users.listUsers',compact('data'));
     }
 

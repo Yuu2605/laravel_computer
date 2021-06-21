@@ -8,6 +8,7 @@
                                     <th>email</th>
                                     <th>created_at</th>
                                     <th>updateted_at</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -19,11 +20,9 @@
                                         <td>{{ $user->created_at }}</td>
                                         <td>{{ $user->updateted_at }}</td>
                                         <td>
-                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-primary">Edit</a>
 
-                                            <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
-                                                @csrf
-                                                @method('delete')
+                                            <form method="POST" action="">
                                                 <button class="btn btn-danger" type="submit">Delete</button>
                                             </form>
                                         </td>
