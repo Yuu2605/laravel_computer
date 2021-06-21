@@ -11,9 +11,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        //
+        return view('login');
     }
 
     /**
@@ -21,9 +21,19 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function submitLogin(Request $request)
     {
-        //
+        $username = $request->input('email');
+        $password =$request->input('password');
+
+        if (Auth::attempt([
+            'username'=>"$username",
+            'password'=>"$password"
+        ])) {
+            return redirect()->route('dashboard');
+        } else {
+            return back()->WithError('Tên tài khoản mật khẩu không đúng');
+        }
     }
 
     /**
@@ -32,53 +42,10 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function logout(Request $request)
     {
-        //
+        Auth::logout();
+        return redirect()->route('auth.login');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
