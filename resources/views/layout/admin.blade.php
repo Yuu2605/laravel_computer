@@ -338,7 +338,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-12">
                 <div class="card ">
                   <div class="card-body">
-                   @yield('content');
+                   @yield('content')
                   </div>
                 </div>
             </div>

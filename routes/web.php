@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersController;
-
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +38,20 @@ use App\Http\Controllers\UsersController;
         Route::get('/add-users',[UsersController::class,'create'])->name('user.form');
         Route::post('/add-users',[UsersController::class,'store'])->name('user.store');
         Route::get('/list-users',[UsersController::class,'index'])->name('user.list');
+        Route::get('/add-category',[CategoriesController::class,'create'])->name('categories.form');
     });
 
+    Route::prefix('frontend')->group(function () {
+        Route::get('/login', [AuthController::class,'login'])->name('auth.login');
+        Route::post('/login', [AuthController::class,'submitLogin'])->name('auth.loginSubmit');
+        Route::get('/home', function () {
+            return view('frontend.home.index');
+        })->name('frontend.home.index');
+        Route::get('/dang-ky', function () {
+            return view('frontend.dangky.dangky')->name('frontend.dangky.dangky');
+        });
 
+    });
 
 // Route::get('/Dashboard', function () {
 //     return "test";
